@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      -webkit-app-region: drag;
+    }
+    p {
+      -webkit-app-region: no-drag;
+    }
+    .user-wrap {
+      padding: 20px;
+    }
+    .user-avatar {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      margin: 40px 70px 10px;
+    }
+
+    #login-btn {
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
+      text-align: center;
+      background-color: #ccc;
+      color: #fff;
+      margin: 34px 24px 24px;
+      cursor: pointer;
+      user-select: none;
+      border-radius: 4px;
+    }
+
+    input {
+      outline-style: none;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 4px 6px;
+      font-size: 18px;
+      width: 170px;
+      font-weight: 100;
+    }
+
+    #close-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 0;
+      background-color: rgb(255, 99, 91);
+      font-size: 14px;
+      line-height: 14px;
+      text-align: center;
+    }
+
+    #close-btn {
+      display: none;
+    }
+
+    .password-wrap {
+      position: relative;
+    }
+
+    #error-tip {
+      color: red;
+      line-height: 12px;
+      font-size: 12px;
+      display: none;
+      position: absolute;
+      bottom: -20px;
+      left: 50px;
+    }
+
+    ::placeholder {
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+  <body>
+    <div id="close-icon"><span id="close-btn">x</span></div>
+    <div class="user-wrap">
+      <img class="user-avatar" src="./resources/images/users/user.png" />
+      <p>账号：<input type="text" value="Ivy" placeholder="输入账号"/></p>
+      <p class="password-wrap">密码：<input id="password" type="password" placeholder="输入密码"/><span id="error-tip">密码错误</span></p>
+      <div id="login-btn">登录</div>
+    </div>
+  </body>
+  <script>
+    const PASSWORD = '123456';
+
+    const loginBtn = document.getElementById('login-btn');
+    const closeIcon = document.getElementById('close-icon');
+    const closeBtn = document.getElementById('close-btn');
+    const errorTip = document.getElementById('error-tip');
+    const passwordEle = document.getElementById('password');
+
+    let password;
+
+    loginBtn.onclick = () => {
+      if (!password) {
+        return;
+      }
+      if (password !== PASSWORD) {
+        errorTip.style.display = 'block';
+
+      } else {
+
+      }
+    };
+
+    passwordEle.oninput = () => {
+      password = passwordEle.value;
+      if (!password) {
+        loginBtn.style.backgroundColor = '#ccc';
+      } else {
+        loginBtn.style.backgroundColor = 'rgb(57, 187, 70)';
+      }
+      errorTip.style.display = 'none';
+    };
+
+    closeIcon.onmouseenter = () => closeBtn.style.display = 'block';
+    closeIcon.onmouseleave = () => closeBtn.style.display = 'none';
+  </script>
+</html>
